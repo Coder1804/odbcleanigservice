@@ -1,0 +1,107 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap');
+
+:root
+{
+    /*background properties*/
+    --bg-default:#FFF7ED;
+    --bg-primary:#FFCC8D;
+    --bg-secondary:#252525;
+    --bg-darker:#FFDDB2;
+
+/*    typography properties*/
+    --text-primary:#000000;
+    --text-secondary:#FFFFFF;
+    --text-mute:#AAAAAA;
+    --text-darker:#FFDDB2;
+    --text-green:#115E59;
+    --text-dark-primary:#E17654;
+
+/*    card properties*/
+    --bg-card-primary:#FFCC8D;
+    --bg-card-secondary:#FFEAD0;
+    --bg-card-darker:#FFDDB2;
+
+/*    buttons properties */
+    --btn-primary:#FF8C38;
+    --btn-disabled:#AAAAAA;
+
+}
+
+*{
+    padding: 0;
+    margin:0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body{
+    background-color: var(--bg-default);
+}
+
+._container
+{
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+header nav a.active
+{
+    text-decoration: underline;
+    letter-spacing: 1px;
+    text-underline-offset: 2px;
+}
+
+.contact-info svg
+{
+    fill:currentColor;
+    cursor: pointer;
+}
+
+
+
+.contact-info-loc
+{
+    position: absolute;
+    bottom: -120px;
+    border-radius: 10px;
+    width: 100%;
+    height: 100px;
+    background-color: #FFFFFF;
+    box-shadow: rgba(0, 0, 0, 0.35) 0 5px 15px;
+    display: none;
+}
+.contact-info-loc::after
+{
+    content: '';
+    position: absolute;
+    top: -14px;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-left: 15px solid transparent;
+    border-right: 15px solid transparent;
+    border-bottom: 15px solid #FFFFFF;
+    transform: translateX(-50%);
+}
+.contact-info-loc-parent:hover .contact-info-loc
+{
+    display: block;
+}
+
+.wrapper-home
+{
+    background-image: linear-gradient( rgba(0, 0, 0, 0.3) 100%, rgba(0, 0, 0, 0.1) 100%), url("img/homeBg.png");
+    background-size:cover;
+    background-repeat:no-repeat;
+}
+
+button:disabled
+{
+    background-color: var(--btn-disabled);
+    cursor: not-allowed;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
