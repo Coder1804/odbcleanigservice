@@ -14,7 +14,7 @@ const Footer = () => {
                             Xorazm Viloyati <br/>
                             Xonqa tumani  <br/>
                             Andalip ko'chasi <br/>
-                            Mo'ljal:Al-Xorazmiy litseyi
+                            Mo'ljal:Al-Xorazmiy litsey
                         </h3>
                     </div>
                     <div className="social-media  flex gap-2 mr-4">
