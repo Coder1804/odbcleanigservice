@@ -12,6 +12,7 @@ export default {
             "primary":'var(--bg-primary)',
             "secondary": 'var(--bg-secondary)',
             "darker":'var(--bg-darker)',
+            'green':'var(--text-green)',
             'text-primary': 'var(--text-primary)',
             'text-secondary': 'var(--text-secondary)',
             'text-mute': 'var(--text-mute)',

@@ -6,4 +6,5 @@ import Button from "./common/Button.jsx";
 import ChooseOptions from './common/ChooseOptions.jsx'
 import ChooseOption from "./common/ChooseOption.jsx";
 import Order from "./common/Order.jsx";
-export {Footer,Header ,ContactInfo , Wrapper ,Button , ChooseOptions , ChooseOption , Order}
+import ServicesList from "./common/ServicesList.jsx";
+export {Footer,Header ,ContactInfo , Wrapper ,Button , ChooseOptions , ChooseOption , Order , ServicesList}

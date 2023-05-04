@@ -1,4 +1,5 @@
 import {StarIcon , MoneyIcon , ToolIcon} from "./icons.jsx";
+import {shoes, towel} from "../assets/index.js";
 
 export const navLinks = [
     {
@@ -49,4 +50,19 @@ export const chooseOptions = [
         slogan:'Bizda chet eldan olib kelingan va oxirgi rusmdagi zamonaviy uskunalar',
         Icon:ToolIcon
     },
+]
+
+export const servicesList = [
+    {
+        id:0,
+        service:'Tekistil maxsulotlari',
+        img:shoes,
+        pathId:'#tekstil-maxsulotlari'
+    },
+    {
+        id:1,
+        service:'Yotoq qurollari',
+        img:towel,
+        pathId:'#yotoq-qurollari'
+    }
 ]

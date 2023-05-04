@@ -3,16 +3,16 @@ import {Header, Footer, ContactInfo} from "./components/index.js";
 function App() {
 
   return (
-    <div className="min-h-screen relative">
-        <ContactInfo/>
-        <Header/>
-        <main>
-            <Outlet/>
-        </main>
-        <footer className="w-full  p-5 bg-secondary">
-            <Footer/>
-        </footer>
-    </div>
+       <>
+           <ContactInfo/>
+           <Header/>
+           <main>
+               <Outlet/>
+           </main>
+           <footer className="w-full p-5 bg-secondary">
+               <Footer/>
+           </footer>
+       </>
   )
 }
 

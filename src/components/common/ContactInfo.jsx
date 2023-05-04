@@ -5,12 +5,12 @@ import {LocationIcon, PhoneIcon, TelegramIcon} from "../../data/icons.jsx";
 const ContactInfo = () => {
     return (
         <div className="contact-info p-4 bg-primary">
-            <div className="_container flex justify-evenly items-center">
+            <div className="_container flex flex-col md:flex-row gap-2 justify-evenly items-center">
                 <div className="social-media  flex gap-2 mr-4">
                     <h3>Biz bilan bog'lanish👉🏽</h3>
                     <Link to='https://telegram.com/'><TelegramIcon className="cursor-pointer"/></Link>
                 </div>
-                <div className="contact-info-loc-parent flex gap-2 items-center relative">
+                <div className="contact-info-loc-parent my-4  md:my-0 flex gap-2 items-center relative ">
                     <LocationIcon/>
 
                     <h3>Mo'ljal:Al-Xorazmiy litseyi</h3>
