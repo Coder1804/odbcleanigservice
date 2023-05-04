@@ -8,7 +8,7 @@ import {action as orderAction} from "./components/common/Order.jsx";
 
 const router = createBrowserRouter([
     {
-        path:'/',
+        path:'/odbcleanigservice',
         element: <App/>,
         children:[
             {
