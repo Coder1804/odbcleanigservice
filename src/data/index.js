@@ -66,3 +66,9 @@ export const servicesList = [
         pathId:'#yotoq-qurollari'
     }
 ]
+
+export const prices = [
+    {
+
+    }
+]

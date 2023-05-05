@@ -1,35 +1,35 @@
 import React, {useEffect, useRef, useState} from 'react';
-import {Form , useActionData , useNavigation , redirect} from "react-router-dom";
+import {Form, useActionData, useNavigation, redirect, useSubmit} from "react-router-dom";
 import MaskedInput from 'react-text-mask'
-import {ColorRing} from "react-loader-spinner";
+import {CirclesWithBar} from "react-loader-spinner";
 import postman from '../../assets/postman.png';
 
 
-export async function action(obj)
-{
+export async function action(obj) {
     const formData = await obj?.request.formData();
     const username = formData.get('username');
     const phone = formData.get('phone');
     const message = formData.get('message');
-    console.log(username , phone )
-    if(username.length < 3 && message.length < 10)
+    const headers = new Headers();
+    headers.append("Content-Type" , "application/json");
+    try {
+        const res = await fetch('http://localhost:3000/v1/api/sendemail', {
+            method:'post',
+            headers:headers,
+            body:JSON.stringify({
+                username,phone,message
+
+            })
+        //     ,
+        //     headers: {
+        //     "Content-type": "application/json; charset=UTF-8"
+        // }
+        });
+        const data = await  res.json();
+        console.log(data)
+    }catch (err)
     {
-        return {
-            usernameError:'Kamida 3 harfdan iborat bolishi lozim',
-            messageError : 'Xabar kamida 10ta harfdan iborat bo\'lishi lozim'
-        }
-    }
-    if(username.length < 3)
-    {
-        return {
-            usernameError: 'Kamida 3 harfdan iborat bolishi lozim',
-        }
-    }
-    if(message.length < 10)
-    {
-        return {
-            messageError : 'Xabar kamida 10ta harfdan iborat bo\'lishi lozim'
-        }
+        console.error(err)
     }
     redirect('/')
     return 'success'
@@ -38,33 +38,65 @@ export async function action(obj)
 
 const Order = () => {
     const [success, setSuccess] = useState(false);
-    const [loading , setLoading] = useState(false);
+
+    const [errorUsername, setErrorUsername] = useState(false);
+    const [errorPhone, setErrorPhone] = useState(false);
+    const [errormessage, setErrorMessage] = useState(false);
+
+    const submit = useSubmit()
+
     const error = useActionData()
     const navigation = useNavigation();
     const formRef = useRef(null);
-    const numberRef = useRef(null);
-    console.log("adasdasd",numberRef.current);
-    const timer = ()=> setTimeout(()=>{
-        setSuccess(false)
-    },3000)
-    useEffect(() => {
 
-        if(error === 'success')
-        {
-            setSuccess(true);
-            formRef.current.reset();
-            timer();
+
+    const handleValidation = (event) => {
+
+        const {name, value} = event.target;
+        switch (name) {
+            case "username":
+                if (value.length < 3 || value.length > 16) {
+                    setErrorUsername(true);
+                } else {
+                    setErrorUsername(false)
+                }
+                break;
+            case "phone":
+                const match = value.match(/\d/g);
+                if (!match || match.length !== 12) {
+                    setErrorPhone(true)
+                } else {
+                    setErrorPhone(false)
+                }
+                break;
+            case "message": {
+                if (value.length < 10) {
+                    setErrorMessage(true)
+
+                } else {
+                    setErrorMessage(false)
+                }
+            }
+
         }
-    }, [error]);
 
-    console.log(error, "i am error")
+    }
+    const handleSubmit =async (e)=>{
+        e.preventDefault();
+        if(!errorUsername && !errorPhone && !errormessage)
+        {
+            submit(e.currentTarget);
+        }
+    }
     return (
-        <div className="my-6 flex gap-8">
+        <div className="my-6 flex flex-col md:flex-row gap-8">
             <Form
-                className="w-[50%] bg-primary p-6"
+                onSubmit = {handleSubmit}
+                onBlur={handleValidation}
+                className="message-form flex-1 flex flex-col bg-primary p-6 gap-10"
                 method='post'
                 ref={formRef}
-                replace >
+                replace>
                 <div className="flex flex-col  gap-3">
                     <label className="text-lg font-medium" htmlFor="username">Ismingiz:</label>
                     <input
@@ -75,20 +107,20 @@ const Order = () => {
                         name="username"
                         id="username"
                         required/>
-                    <span>{error?.usernameError}</span>
+                    {errorUsername && <span>Ism 3-16 ta harfdan iborat bo'lishi lozim </span>}
                 </div>
 
-                <div className="flex flex-col  gap-3">
+                <div className="flex-1 flex flex-col  gap-3">
                     <label className="text-lg font-medium" htmlFor="phone">Telfon raqam:</label>
                     <MaskedInput
-                        mask={['(','+' ,'9', '9', '8', ')', ' ',/\d/,/\d/,' ' ,/\d/, /\d/, /\d/, '-', /\d/, /\d/, '-', /\d/, /\d/]}
+                        mask={['(', '+', '9', '9', '8', ')', ' ', /\d/, /\d/, ' ', /\d/, /\d/, /\d/, '-', /\d/, /\d/, '-', /\d/, /\d/]}
                         guide={true}
                         className="h-[40px] p-4"
                         autoComplete={'off'}
                         name="phone"
-                        placeholder = '(+998) __ ___ - __ - __'
-                        id="phone" />
-                    <span>{error?.phoneError}</span>
+                        placeholder='(+998) __ ___ - __ - __'
+                        id="phone"/>
+                    {errorPhone && <span>Telfon raqamini to'g'ri kiriting!</span>}
                 </div>
 
                 <div className="flex flex-col gap-3">
@@ -99,31 +131,30 @@ const Order = () => {
                         name="message"
                         rows={6}
                         required/>
-                    <span>{error?.messageError}</span>
-
+                    {errormessage && <span>Eng kamida 10 ta harfdan iborat bo'lishi lozim!</span>}
                 </div>
-                <button className="bg-btn-primary p-4 text-lg font-medium text-text-secondary" type="submit" disabled={navigation.state === 'submitting'}>
-                    {navigation.state === 'submitting' ? 'Xabar yuborilmoqda...' : 'Yuborish'}
-                </button>
-                {success
-                    &&
-                    <div className="flex flex-col text-lg font-medium gap-2 items-center">
-                        <ColorRing
-                            visible={true}
-                            height="40"
-                            width="40"
-                            ariaLabel="blocks-loading"
+                <button className="bg-btn-primary my-3 p-4 text-lg font-medium text-text-secondary flex justify-center items-center gap-2" type="submit"
+                        disabled={navigation.state === 'submitting'}>
+                    {navigation.state === 'submitting' ? <>
+                        <CirclesWithBar
+                            height="24"
+                            width="24"
+                            color="#115E59"
                             wrapperStyle={{}}
-                            wrapperClass="blocks-wrapper"
-                            colors={['#e15b64', '#f47e60', '#f8b26a', '#abbd81', '#849b87']}
+                            wrapperClass=""
+                            visible={true}
+                            outerCircleColor=""
+                            innerCircleColor=""
+                            barColor=""
+                            ariaLabel='circles-with-bar-loading'
                         />
-                        <h4>Xabar yuborilmoqda ... </h4>
-                    </div>
-                }
+                        <span>Xabar yuborilmoqda...</span>
+                    </> : 'Yuborish'}
+                </button>
             </Form>
 
             <div className="flex-1">
-                <img src={postman} alt="postman"/>
+                <img loading="lazy" src={postman} alt="postman"/>
             </div>
 
         </div>
