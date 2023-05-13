@@ -1,11 +1,12 @@
-import {Outlet} from  'react-router-dom'
-import {Header, Footer, ContactInfo} from "./components/index.js";
+import {Outlet, useLocation} from 'react-router-dom'
+import {Header, Footer, ContactInfo , ScrollToTop} from "./components/index.js";
 function App() {
 
   return (
        <>
            <ContactInfo/>
            <Header/>
+           <ScrollToTop/>
            <main>
                <Outlet/>
            </main>

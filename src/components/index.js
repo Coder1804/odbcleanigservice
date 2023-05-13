@@ -7,4 +7,5 @@ import ChooseOptions from './common/ChooseOptions.jsx'
 import ChooseOption from "./common/ChooseOption.jsx";
 import Order from "./common/Order.jsx";
 import ServicesList from "./common/ServicesList.jsx";
-export {Footer,Header ,ContactInfo , Wrapper ,Button , ChooseOptions , ChooseOption , Order , ServicesList}
+import ScrollToTop from "./common/ScrollToTop.jsx";
+export {Footer,Header ,ContactInfo , Wrapper ,Button , ChooseOptions , ChooseOption , Order , ServicesList ,ScrollToTop}

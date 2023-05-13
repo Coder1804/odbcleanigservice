@@ -14,7 +14,8 @@ const router = createBrowserRouter([
             {
                 path:'/',
                 element:<Home/>,
-                action:orderAction
+                action:orderAction,
+                errorElement:<h1>Nimadir XAto!</h1>
             },
             {
                 path: 'price',

@@ -20,7 +20,7 @@ const Contact = () => {
                             Raqam:
                         </span>
                                 <span className='text-sm'>
-                            +99897-526-56-77
+                            +99862-399-27-75
                         </span>
                             </div>
                             <div>
@@ -28,7 +28,7 @@ const Contact = () => {
                             Ish kunlari:
                         </span>
                                 <span className='text-sm'>
-                            Du-Sha: 09:00 : 18:00
+                            Dushanba-Shanba: 09:00 : 18:00
                         </span>
                             </div>
                         </div>

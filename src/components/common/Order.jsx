@@ -1,5 +1,5 @@
 import React, {useEffect, useRef, useState} from 'react';
-import {Form, useActionData, useNavigation, redirect, useSubmit} from "react-router-dom";
+import {Form, useActionData, useNavigation, redirect, useNavigate,useSubmit} from "react-router-dom";
 import MaskedInput from 'react-text-mask'
 import {CirclesWithBar} from "react-loader-spinner";
 import postman from '../../assets/postman.png';
@@ -11,33 +11,28 @@ export async function action(obj) {
     const phone = formData.get('phone');
     const message = formData.get('message');
     const headers = new Headers();
+    let data;
     headers.append("Content-Type" , "application/json");
     try {
-        const res = await fetch('http://localhost:3000/v1/api/sendemail', {
+        const res = await fetch('https://diamondgold.onrender.com/v1/api/sendemail', {
             method:'post',
             headers:headers,
             body:JSON.stringify({
                 username,phone,message
 
             })
-        //     ,
-        //     headers: {
-        //     "Content-type": "application/json; charset=UTF-8"
-        // }
         });
-        const data = await  res.json();
-        console.log(data)
+        data = await  res.json();
+       return data;
     }catch (err)
     {
-        console.error(err)
+        return {
+            success:false
+        }
     }
-    redirect('/')
-    return 'success'
-
 }
 
 const Order = () => {
-    const [success, setSuccess] = useState(false);
 
     const [errorUsername, setErrorUsername] = useState(false);
     const [errorPhone, setErrorPhone] = useState(false);
@@ -48,7 +43,6 @@ const Order = () => {
     const error = useActionData()
     const navigation = useNavigation();
     const formRef = useRef(null);
-
 
     const handleValidation = (event) => {
 
@@ -81,6 +75,27 @@ const Order = () => {
         }
 
     }
+    useEffect(() => {
+        const username = document.getElementById('username');
+        const phone = document.getElementById('phone');
+        const message = document.getElementById('message');
+        const interval = setTimeout(()=>{
+               if(error?.success === true)
+               {
+                   username.value = ''
+                   phone.value = ''
+                   message.value = ''
+               }
+
+
+            },2000)
+
+        return()=> clearTimeout(interval);
+    }, [error]);
+
+
+
+
     const handleSubmit =async (e)=>{
         e.preventDefault();
         if(!errorUsername && !errorPhone && !errormessage)
@@ -91,6 +106,7 @@ const Order = () => {
     return (
         <div className="my-6 flex flex-col md:flex-row gap-8">
             <Form
+                id="xabar-qoldirish"
                 onSubmit = {handleSubmit}
                 onBlur={handleValidation}
                 className="message-form flex-1 flex flex-col bg-primary p-6 gap-10"
@@ -148,9 +164,11 @@ const Order = () => {
                             barColor=""
                             ariaLabel='circles-with-bar-loading'
                         />
-                        <span>Xabar yuborilmoqda...</span>
+                        <span className="text-black">Xabar yuborilmoqda...</span>
                     </> : 'Yuborish'}
                 </button>
+                {error?.success && <h4>Xabar yuborildi!</h4>}
+                {error?.success === false  && <h4>Iltimos keyinroq urinib ko'ring!</h4>}
             </Form>
 
             <div className="flex-1">

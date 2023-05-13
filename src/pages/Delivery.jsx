@@ -20,7 +20,7 @@ const Delivery = () => {
                         <span className="w-full h-full bg-black absolute inset-0 opacity-50"></span>
                     </div>
                    <div className="mt-4 mb-20">
-                       <p className="my-4 tracking-wide font-normal">Quruq tozalash - butun dunyoda nihoyatda ommabop va talab qilinadigan xizmat bo'lib, bu kiyim,
+                       <p className="my-4 tracking-wide font-normal">Tozalash - butun dunyoda nihoyatda ommabop va talab qilinadigan xizmat bo'lib, bu kiyim,
                            tekstil va boshqa buyumlardagi turli xil kir va dog'larni tez va samarali tozalashga imkon
                            beradi. So'nggi paytgacha bu xizmatdan foydalanish uchun siz buyumingizni salonga olib
                            kelishingiz kerak bo'lgan. Shu bilan birga, kiyim egasi yo'l uchun vaqt va pul sarflashi kerak
@@ -28,8 +28,8 @@ const Delivery = () => {
 
                        </p>
                        <p className="tracking-wide font-normal">
-                           Bizning tozalash xizmatimiz Toshkent shahri ichida yetkazib berishni amalga oshiradi. Batafsil
-                           ma'lumotni +99897-526-56-77 raqamiga qo'ng'iroq qilib olishingiz mumkin.
+                           Bizning tozalash xizmatimiz Xonqa tumani ichida yetkazib berishni amalga oshiradi. Batafsil
+                           ma'lumotni  +99862-399-27-75 raqamiga qo'ng'iroq qilib olishingiz mumkin.
                        </p>
                    </div>
                 </div>

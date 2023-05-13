@@ -104,7 +104,6 @@ header nav a.active
 
 .wrapper-home
 {
-    background-image: linear-gradient( rgba(0, 0, 0, 0.3) 100%, rgba(0, 0, 0, 0.1) 100%), url("img/homeBg.png");
     background-size:cover;
     background-repeat:no-repeat;
 }
@@ -147,6 +146,23 @@ button:disabled
 {
     color: red;
     margin: 0.5rem 0;
+}
+@keyframes slideaway {
+    from { display: flex; }
+    to { transform: translateY(40px); opacity: 1 }
+}
+.scroll-top
+{
+    scale: 0;
+    display: none;
+    transition: scale .5s ease-in-out , transform .5s ease-in-out;
+    transform: rotate(225deg);
+}
+.scroll-top.active
+{
+    display: flex;
+    scale: 1;
+    transform: translateY(-1rem) rotate(0);
 }
 
 

@@ -11,8 +11,8 @@ const Footer = () => {
                     <Link to='.' className="flex items-center">
                         <img className="w-16 h-16" src={logo} alt="logo"/>
                         <div>
-                            <h1 className="text-lg font-bold">DIAMOND GOLD</h1>
-                            <p className="text-xs">DRY CLEANING SERVICES</p>
+                            <h1 className="text-lg font-bold">XONQA XIMCHISTKA</h1>
+                            <p className="text-xs">CLEANING SERVICES</p>
                         </div>
                     </Link>
                     <div className="md:text-center">
@@ -28,7 +28,7 @@ const Footer = () => {
                     </div>
                 </div>
                 <div className="w-full md:text-center mt-6">
-                    &copy;&nbsp;2023&nbsp;ODBCLEANIGSERVICE.UZ
+                    &copy;&nbsp;2023&nbsp;XONQAXIMCHISTKA.COM
                 </div>
             </div>
     );

@@ -12,8 +12,8 @@ const Header = () => {
                 <Link to='.' className="flex items-center">
                     <img className="w-16 h-16" src={logo} alt="logo"/>
                     <div>
-                        <h1 className="text-lg font-bold">DIAMOND GOLD</h1>
-                        <p className="text-xs">DRY CLEANING SERVICES</p>
+                        <h1 className="text-lg font-bold">XONQA XIMCHISTKA</h1>
+                        <p className="text-xs">CLEANING SERVICES</p>
                     </div>
                 </Link>
                 <div
@@ -41,7 +41,13 @@ const Header = () => {
                     {navLinks.map(link=>(
                         <li key={link.id} className="px-2 py-4 border-b font-medium">
                             <NavLink to={`${link.link}`} className={({isActive})=>
-                                isActive ? 'active' : null
+                            {
+                                if(isActive)
+                                {
+                                    document.title = link.linkName.toUpperCase()
+                                    return 'active'
+                                }
+                            }
                             }>
                                 {link.linkName.toLocaleUpperCase()}
                             </NavLink>
