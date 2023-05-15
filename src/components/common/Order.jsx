@@ -136,7 +136,7 @@ const Order = () => {
                         name="phone"
                         placeholder='(+998) __ ___ - __ - __'
                         id="phone"/>
-                    {errorPhone && <span>Telfon raqamini to'g'ri kiriting!</span>}
+                    {errorPhone && <span>Telefon raqamini to'g'ri kiriting!</span>}
                 </div>
 
                 <div className="flex flex-col gap-3">
