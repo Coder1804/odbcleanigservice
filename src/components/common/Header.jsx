@@ -11,7 +11,7 @@ const Header = () => {
             <div className="flex  justify-between items-center py-2 mb-3">
                 <Link to='.' className="flex items-center">
                     <img className="w-16 h-16" src={logo} alt="logo"/>
-                    <div>
+                    <div className="text-center">
                         <h1 className="text-lg font-bold">XONQA XIMCHISTKA</h1>
                         <p className="text-xs">CLEANING SERVICES</p>
                     </div>

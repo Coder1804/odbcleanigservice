@@ -127,7 +127,7 @@ const Order = () => {
                 </div>
 
                 <div className="flex-1 flex flex-col  gap-3">
-                    <label className="text-lg font-medium" htmlFor="phone">Telfon raqam:</label>
+                    <label className="text-lg font-medium" htmlFor="phone">Telefon raqam:</label>
                     <MaskedInput
                         mask={['(', '+', '9', '9', '8', ')', ' ', /\d/, /\d/, ' ', /\d/, /\d/, /\d/, '-', /\d/, /\d/, '-', /\d/, /\d/]}
                         guide={true}

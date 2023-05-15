@@ -10,7 +10,7 @@ const Footer = () => {
                 <div className="flex flex-col md:flex-row  w-full justify-around md:items-center gap-10 pb-4 border-b-2">
                     <Link to='.' className="flex items-center">
                         <img className="w-16 h-16" src={logo} alt="logo"/>
-                        <div>
+                        <div className="text-center">
                             <h1 className="text-lg font-bold">XONQA XIMCHISTKA</h1>
                             <p className="text-xs">CLEANING SERVICES</p>
                         </div>
